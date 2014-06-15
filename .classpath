@@ -2,11 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
-	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/Desktop/workspace/Bukkit Sources/Bukkit_DEV1881.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/Desktop/workspace/Bukkit Sources/Craftukkit_DEV2991.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/Desktop/workspace/Bukkit Sources/TagAPI.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/Desktop/workspace/Bukkit Sources/Vault_1.2.29.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/Desktop/workspace/Bukkit Sources/WorldEdit_5.8.8.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/Desktop/workspace/Bukkit Sources/WorldGuard_5.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/git/Sources/Bukkit_1938.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/git/Sources/Craftbukkit_3092.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Colby Leclerc/git/Sources/Vault-1.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

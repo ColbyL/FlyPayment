@@ -102,7 +102,6 @@ public class Utilities {
     public long convertTimeFormatToNano(String formattedTime){
         //converts formattedTime to nano
         //TODO Change to actual conversion
-        String 
         long nanoTime = 0L;
         
         //returns nanoTie
