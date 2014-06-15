@@ -99,7 +99,7 @@ public class Utilities {
         return false;
     }
     
-    public long convertTimeFormatToNano(String formattedTime){
+    public static long convertTimeFormatToNano(String formattedTime){
         //converts formattedTime to nano
         //TODO Change to actual conversion
         long nanoTime = 0L;
