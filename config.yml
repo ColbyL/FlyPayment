@@ -1,0 +1,122 @@
+#Fly Payment By AhellHound
+#Default config
+#----------------------------------------------
+#OnReloadTeleportToGround: true (IF you use /reload, or 'reload' in the console, (which isn't advised, as it's known to create some nasty errors,)
+# then all players will be teleported to the block below them, and their flights will be disabled.)
+#ChargeItemNameTier1: DIAMOND (Use the FULL NAME, NOT the ID, or you WILL get errors)
+#AmountOfItemsToChargeTier1: 1 (Number of items to charge; set to '0' to disable)
+#FlightTimerTier1: 0 (Times are in ticks, so 20 ticks = 1 second.)
+#ChargeEXPTier1: 0 (Amount of EXP to charge; set to '0' to disable)
+#ChargeMoneyTier1: 0 (Amount of money to charge; set to '0' to disable)
+#EconomyAccountTier1: false (DO NOT TOUCH THIS! This is for a future feature)
+#EconomyAccountNameTier1: none (If you have a finite economy, this is where the economy money goes)
+#----------------------------------------------
+#***WARNING***
+#IF YOU HAVE THE ECONOMY PORTION ENABLED, AND THERE ISN'T INSTANT FLYING
+#WHEN THE PLAYER USES /FLY ON, IT'S YOUR CONNECTION TO THE MySQL AND
+#ECOOMY PLUGIN CAUSING THE LAG, NOT FLY PAYYMENT.
+#*************
+#If you only want one price throughout the server, then just use Tier 1
+#and give that permission to everyone.
+#If you don't want a group to be timed, set the FlightTimerTier(1-5) to 0.
+#*********************************************************************
+
+#ONLY disable this IF you ALWAYS use /Fly DisableAll before reloading
+#/restarting your server, or else plays WILL get unlimited flight.
+OnReloadTeleportToGround: true
+
+#When a player goes to ban another player (from flying), do you want to have the player be required to set a time amount?
+FlyBanRequireTime: true
+#If so, do you want  a limit to how long the player can ban for? If not, set to '0'
+FlyBanMaxTime: 0
+
+
+#Permission: FlyP.Fly.1
+ChargeItemNameTier1: DIAMOND 
+AmountOfItemsToChargeTier1: 1
+FlightTimerTier1: 400
+ChargeEXPTier1: 20
+ChargeMoneyTier1: 0
+EconomyAccountTier1: false
+EconomyAccountNameTier1: ServerAccount
+
+#Permission: FlyP.Fly.2
+ChargeItemNameTier2: DIAMOND
+AmountOfItemsToChargeTier2: 1
+FlightTimerTier2: 0
+ChargeEXPTier2: 0
+ChargeMoneyTier2: 0
+EconomyAccountTier2: false
+EconomyAccountNameTier2: ServerAccount
+
+#Permission: FlyP.Fly.3
+ChargeItemNameTier3: DIAMOND
+AmountOfItemsToChargeTier3: 1
+FlightTimerTier3: 0
+ChargeEXPTier3: 0
+ChargeMoneyTier3: 0
+EconomyAccountTier3: false
+EconomyAccountNameTier3: ServerAccount
+
+#Permission: FlyP.Fly.4
+ChargeItemNameTier4: DIAMOND
+AmountOfItemsToChargeTier4: 1
+FlightTimerTier4: 0
+ChargeEXPTier4: 0
+ChargeMoneyTier4: 0
+EconomyAccountTier4: false
+EconomyAccountNameTier4: ServerAccount
+
+#Permission: FlyP.Fly.5
+ChargeItemNameTier5: DIAMOND
+AmountOfItemsToChargeTier5: 1
+FlightTimerTier5: 0
+ChargeEXPTier5: 0
+ChargeMoneyTier5: 0
+EconomyAccountTier5: false
+EconomyAccountNameTier5: ServerAccount
+
+#Player Messages
+# You MUST keep the quotation marks outside the message!
+# Don't interchange the fillers. (for example, you cannot use %ItemAmount% in the 'PermissionErrorMessage')
+# %player% = player who used the command (This CAN be used in any message)
+# %ItemAmount% = The amount of items required to fly
+# %ItemName% = The name of the item required to fly
+# %RemainingEXPNeeded% = The amount of EXP needed left to fly
+# %RemainingMoneyNeeded% = The amount of money needed left to fly
+# %ItemChargeAmount% = The amount of items charged to fly
+# %EXPChargeAmount% = The amount of EXP charged to fly
+# %FlightTime% = The amount of time a player has to fly
+# %MoneyNamePlural% = The plural name of your currency
+# %MoneyNameSingular% = The singular name of your currency
+# %timeLeftCommand% = The time left when using /fly timeleft command
+# %BannedPlayerName% = The name of the player banned from flying
+# %TimeBanned% = The amount of time the player is banned from flying.
+PlayerErrorMessage: "You must be a player!"
+CommandUsageErrorMessage: "/Fly <on:off:timeLeft>"
+PermissionErrorMessage: "You lack the permission to do this!"
+FlyingAlreadyEnabledMessage: "Flying is already enabled, %player%!"
+FlyingEnabledMessage: "Flying Enabled, %player%."
+ItemRequirementMessage: "You need %ItemAmount% %ItemName%, %player%, to start flying!"
+EXPRequirementMessage: "You need %RemainingEXPNeeded% more EXP, %player%, to start flying!"
+#For MoneyRequiredMessage, you can also use %MoneyNameSingular%, as well as, %MoneyNamePlural%
+MoneyRequirementMessage: "You need %RemainingMoneyNeeded% %MoneyNamePlural% more, %player%, to start flying! "
+FlyingEnabledNoTimeLimitMessage: "Flying enabled, %player%. You're flight has no time limit."
+InvalidArgumentMessage: "Invalid Argument!"
+FlyingOffIn10Message: "Your flight runs out in 10 seconds!"
+#For ItemRemoveMessage, you can also use %ItemChargeAmount%
+ItemRemovedMessage: "I'll take that %ItemName%, %player%."
+EXPRemovedMessage: "%EXPChargeAmount% has been deducted from your total experience, %player%."
+#For MoneyRemovedMessage, you can also use %MoneyNameSingular%, as well as, %MoneyNamePlural%
+MoneyRemovedMessage: "%MoneyChargeAmount% %MoneyNamePlural% has been deducted from your account, %player%"
+TimeLeftMessage: "You have %FlightTime% %MinutesOrSeconds% left until your flight is disabled."
+FlyingAlreadyDisabledMessage: "Flying is already disabled, %player%."
+FlyingDisabledMessage: "Flying disabled."
+SecondsMessage: "second(s)"
+MinutesMessage: "minute(s)"
+TimeLeftCommandMessage: "You have %timeLeftCommand% remaining on your flight, %player%."
+#Sends this message if player is trying to use /Fly TimeLeft when he/she is not flying
+TimeLeftNotFlyingMessage: "You're not flying, %player%!"
+FlyingHasNoTimeLimitMessage: "Your flight has no time limit, %player%!"
+FlyBanRequiredTimeMessage: "You must enter an amount of time to ban the player, %player%!"
+BanAddedMessage: "You've banned %BannedPlayerName% from flying for %TimeBanned%."

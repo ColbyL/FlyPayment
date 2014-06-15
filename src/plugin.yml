@@ -1,0 +1,26 @@
+#Plugin yml file Tests
+name: Fly Payment
+author: AhellHound
+main: com.ahellhound.bukkit.flypayment.Main
+version: 3.2
+depend: [Vault]
+commands:
+    fly:
+        description: Start and stop flying.
+        usage: /<command> <on:off:reload:timeLeft>
+permissions: 
+    flyp.fly: 
+        description: Allows you to use the /Fly on and /Fly off commands.
+        default: op
+    flyp.reload: 
+        description: Reloads the FlyPayment pugin.
+        default: op
+    flyp.bypass:
+        default: op
+        description: Bypasses the cost of an item to fly.
+    flyp.takedamage:
+        default: op
+        description: Make's the user take damage after disabling flight.
+    flyp.timeLeft:
+        default: op
+        description: Gives the player the amount of time left in their flight.

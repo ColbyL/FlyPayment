@@ -13,7 +13,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-
+.metadata/
+.settings/
+.project
 # =========================
 # Operating System Files
 # =========================
