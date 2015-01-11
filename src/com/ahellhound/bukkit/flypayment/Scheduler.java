@@ -1,32 +1,32 @@
 package com.ahellhound.bukkit.flypayment;
 
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-
 public class Scheduler {
 
-    // Utilites contructor
-    private Utilities Utilities = new Utilities();
-    // Messages constructor
-    private Messages Messages = new Messages();
     // Hashmap of schedualr ID's
     private static Map<Player, Integer> schedulerID = new HashMap<Player, Integer>();
     // Hasmap of player's with protect flight
     private static Map<Player, Integer> protectFlightv = new HashMap<Player, Integer>();
     // Hasmap of players safe from fall damage
     private static HashSet<String> safePlayers = new HashSet<String>();
-    // Configuration contructor
-    private Configuration objConfig = new Configuration();
     // Hashmap of players start time
     private static Map<Player, Long> schedulerStartTime = new HashMap<Player, Long>();
+    // Utilites contructor
+    private Utilities Utilities = new Utilities();
+    // Messages constructor
+    private Messages Messages = new Messages();
+    // Configuration contructor
+    private Configuration objConfig = new Configuration();
 
     public void enableTimerTier(final Player p, int tier) {
 
@@ -48,17 +48,17 @@ public class Scheduler {
                 }, timer));
 
         p.sendMessage(ChatColor.GREEN + Messages.timeLeftMessage(p, timeForm, minutesOrSeconds));
-        
+
         if (timer > 200) {
             protectFlightv.put(p,
-                    Main.getInstance().getServer().getScheduler().scheduleSyncDelayedTask((Plugin) Main.getInstance(), new Runnable() {
+                    Main.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
                         public void run() {
                             final Player player = p;
                             player.sendMessage(ChatColor.RED + Messages.flyingOffMessage(p));
                             // Removes player from flight
                             // hashmap
                             protectFlightv.remove(p);
-                            
+
                         }
                     }, timer - 200));
         }
@@ -168,46 +168,50 @@ public class Scheduler {
             schedulerStartTime.remove(p); 
         }*/
     }
+
     //clears safe player hashmap
     public void clearSafePlayers(Player p) {
 
         safePlayers.clear();
     }
+
     //clears protectlfight hashmap
     public void clearProtectFlight(Player p) {
 
         protectFlightv.clear();
     }
+
     //removes player from protect flight hashmap
     public void removeProtectFlight(Player p) {
         protectFlightv.remove(p.getName());
 
     }
+
     //gets player time left
-    public String getPlayerTimeLeft(Player p, int tier){
+    public String getPlayerTimeLeft(Player p, int tier) {
         long timerAmount = objConfig.getTimerAmount(tier);
-        long timerAmountCalculated = ((timerAmount/20)*1000);
+        long timerAmountCalculated = ((timerAmount / 20) * 1000);
         //retrieves time player started flying
         long playerStartTime = schedulerStartTime.get(p);
         //Gets time left in mili seconds
         long playerTimeLeftMili = ((playerStartTime + timerAmountCalculated) - System.currentTimeMillis());
         //formats string
-        String playerTimeString = String.format("%d min, %d sec", 
+        String playerTimeString = String.format("%d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes(playerTimeLeftMili),
-                TimeUnit.MILLISECONDS.toSeconds(playerTimeLeftMili) - 
-                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(playerTimeLeftMili)));
+                TimeUnit.MILLISECONDS.toSeconds(playerTimeLeftMili) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(playerTimeLeftMili)));
         //returns player time left
         return playerTimeString;
     }
-    
+
     //Scheduler get player time
-    public long getSchedulerStartTime (Player p){
+    public long getSchedulerStartTime(Player p) {
         //Checks if player is in hashmap
-        if (schedulerStartTime.containsKey(p)){
-          //Gets player from hashmap
-        long startTime = schedulerStartTime.get(p);
-        //returns start time
-        return startTime;
+        if (schedulerStartTime.containsKey(p)) {
+            //Gets player from hashmap
+            long startTime = schedulerStartTime.get(p);
+            //returns start time
+            return startTime;
         }
         //error time of player isn't in hashmap
         long errorTime = 0L;
@@ -217,16 +221,17 @@ public class Scheduler {
 
     // Adds Player time left 
     public void addPlayerTimeLeft(Player p, long currentTime) {
-            schedulerStartTime.put(p, currentTime);
+        schedulerStartTime.put(p, currentTime);
     }
+
     // removes Player time left
     public void removePlayerTimeLeft(Player p) {
 
         if (schedulerStartTime.containsKey(p)) {
- //removes player from hashmap
+            //removes player from hashmap
             schedulerStartTime.remove(p);
         }
     }
-    
+
 
 }

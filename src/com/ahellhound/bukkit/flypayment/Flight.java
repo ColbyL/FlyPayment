@@ -23,7 +23,8 @@ public class Flight {
         p.setAllowFlight(false);
         p.setFlying(false);
         // removes player from player time left hashmap
-        Scheduler.removeFlightTimer(p);;
+        Scheduler.removeFlightTimer(p);
+        ;
 
     }
 

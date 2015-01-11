@@ -223,7 +223,7 @@ public class Messages {
         return timeLeftCommandMessageEnd;
 
     }
-    
+
     public String timeLeftNotFlyingMessage(Player p) {
         // Gets message from config
         String timeLeftNotFlyingMessage = Configuration.getTimeLeftNotFlyingMessage();
@@ -233,7 +233,7 @@ public class Messages {
         return timeLeftNotFlyingEnd;
 
     }
-    
+
     public String flyingHasNoTimeLimitMessage(Player p) {
         // Gets message from config
         String flyingHasNoTimeLimitMessage = Configuration.getFlyingHasNoTimeLimitMessage();
@@ -243,7 +243,7 @@ public class Messages {
         return flyingHasNoTimeLimitMessageEnd;
 
     }
-    
+
     public String requiredBanTimeCommandMessage(Player p) {
         // Gets message from config
         String requiredBanTimeCommandMessage = Configuration.getRequiredBanTimeCommandMessage();
@@ -253,7 +253,7 @@ public class Messages {
         return requiredBanTimeCommandMessageEnd;
 
     }
-    
+
     public String banAddedMessage(Player p, String bannedP, String time) {
         // Gets message from config
         String banAddedMessage = Configuration.getBanAddedMessage();

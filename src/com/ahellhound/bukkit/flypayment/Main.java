@@ -1,9 +1,6 @@
 package com.ahellhound.bukkit.flypayment;
 
-import java.util.logging.Logger;
-
 import net.milkbowl.vault.economy.Economy;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -19,6 +16,8 @@ import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Logger;
 
 public class Main extends JavaPlugin implements Listener {
     Logger log = Logger.getLogger("Minecraft");
@@ -267,36 +266,36 @@ public class Main extends JavaPlugin implements Listener {
                 return true;
             }
             // checks if player is allowed to fly
-                if((Utilities.getTimerIsZero(p)) || (p.hasPermission("flyp.notimeout"))){
-                    
-                    p.sendMessage(ChatColor.RED + Messages.flyingHasNoTimeLimitMessage(p));
-                    return true;
-            }else if (Flight.checkPlayerFlight(p)) {
+            if ((Utilities.getTimerIsZero(p)) || (p.hasPermission("flyp.notimeout"))) {
+
+                p.sendMessage(ChatColor.RED + Messages.flyingHasNoTimeLimitMessage(p));
+                return true;
+            } else if (Flight.checkPlayerFlight(p)) {
 
                 // gets player's time left
                 p.sendMessage(ChatColor.GREEN + Messages.timeLeftCommandMessage(p, Scheduler.getPlayerTimeLeft(p, tier)));
                 return true;
-            
-            }else{
-            //if player is not flying, they can't get time left message
-            p.sendMessage(ChatColor.RED + Messages.timeLeftNotFlyingMessage(p));
-            return true;
-            
+
+            } else {
+                //if player is not flying, they can't get time left message
+                p.sendMessage(ChatColor.RED + Messages.timeLeftNotFlyingMessage(p));
+                return true;
+
             }
-        //fly ban
+            //fly ban
         } else if (args[0].equalsIgnoreCase("ban")) {
             //permission check
-            if (!(p.hasPermission("FlyP.ban.add"))){
+            if (!(p.hasPermission("FlyP.ban.add"))) {
                 //Sends player no permission message
                 p.sendMessage(Messages.permissionErrorMessage(p));
                 //returns true
                 return true;
             }
             //if no argument is made for ban time
-            if (args[2].equalsIgnoreCase(null)){
+            if (args[2].equalsIgnoreCase(null)) {
                 //Checks if config allows permanent bans
-                if (configuration.getFlyBanRequireTime()){
-                  //Sends player message requiring them to enter a ban time
+                if (configuration.getFlyBanRequireTime()) {
+                    //Sends player message requiring them to enter a ban time
                     p.sendMessage(Messages.requiredBanTimeCommandMessage(p));
                     return true;
                 } else {
@@ -311,13 +310,13 @@ public class Main extends JavaPlugin implements Listener {
                     //Sends message to command sender that ban was made
                     p.sendMessage(Messages.banAddedMessage(p, bannedP, timeBannedFormat));
                     //returns true
-                   return true; 
+                    return true;
                 }
-                
+
             }
-            
-            
-        }else {
+
+
+        } else {
             p.sendMessage(ChatColor.RED + Messages.invalidArgumentMessage(p));
             return true;
         }
